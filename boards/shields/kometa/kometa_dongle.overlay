@@ -1,0 +1,23 @@
+#include "kometa.dtsi"
+
+/ {
+    chosen {
+        zmk,kscan = &mock_kscan;
+    };
+
+    mock_kscan: kscan_mock {
+        compatible = "zmk,kscan-mock";
+        columns = <0>;
+        rows = <0>;
+        events = <0>;
+    };
+};
+
+// The dongle has no GPIO matrix. Keep the shared 42-key layout and transform.
+&kscan0 {
+    status = "disabled";
+};
+
+&physical_layout0 {
+    kscan = <&mock_kscan>;
+};
