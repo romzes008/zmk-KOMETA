@@ -3,6 +3,7 @@
 #include <dt-bindings/zmk/ext_power.h>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/outputs.h>
+#include <dt-bindings/zmk/pointing.h>
 #include <dt-bindings/zmk/rgb.h>
 
 #define DEF 0
@@ -36,6 +37,101 @@
             #binding-cells = <0>;
             bindings = <&kp V>, <&kp INSERT>;
         };
+
+        z_tap_dance: z_tap_dance {
+            compatible = "zmk,behavior-tap-dance";
+            label = "Z_TAP_DANCE";
+            #binding-cells = <0>;
+            bindings = <&kp LG(Z)>, <&kp LG(Z)>;
+        };
+
+        x_tap_dance: x_tap_dance {
+            compatible = "zmk,behavior-tap-dance";
+            label = "X_TAP_DANCE";
+            #binding-cells = <0>;
+            bindings = <&kp X>, <&kp LG(X)>;
+        };
+
+        c_tap_dance: c_tap_dance {
+            compatible = "zmk,behavior-tap-dance";
+            label = "C_TAP_DANCE";
+            #binding-cells = <0>;
+            bindings = <&kp C>, <&kp LG(C)>;
+        };
+
+        v_tap_dance: v_tap_dance {
+            compatible = "zmk,behavior-tap-dance";
+            label = "V_TAP_DANCE";
+            #binding-cells = <0>;
+            bindings = <&kp V>, <&kp LG(V)>;
+        };
+
+        smart_shift: smart_shift {
+            compatible = "zmk,behavior-mod-morph";
+            label = "SMART_SHIFT";
+            bindings = <&sk LEFT_SHIFT>, <&caps_word>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_LSFT)>;
+        };
+
+        tab_lt_tab_layer_1: tab_lt_tab_layer_1 {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TAB_LT_TAB_LAYER_1";
+            #binding-cells = <0>;
+            bindings = <&lt 1 TAB>, <&mkp LCLK>;
+        };
+
+        tab_lt_enter_layer_2: tab_lt_enter_layer_2 {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TAB_LT_ENTER_LAYER_2";
+            #binding-cells = <0>;
+            bindings = <&lt 2 ENTER>, <&mkp RCLK>;
+        };
+    };
+
+    combos {
+        compatible = "zmk,combos";
+
+        combo_esc {
+            bindings = <&kp ESCAPE>;
+            key-positions = <5 4>;
+        };
+
+        combo_open_round_bracket {
+            bindings = <&kp N9>;
+            key-positions = <4 3>;
+        };
+
+        combo_close_round_bracket {
+            bindings = <&kp N0>;
+            key-positions = <8 7>;
+        };
+
+        combo_open_square_bracket {
+            bindings = <&kp LA(LEFT_BRACKET)>;
+            key-positions = <2 3>;
+        };
+
+        combo_closed_square_bracket {
+            bindings = <&kp LA(RIGHT_BRACKET)>;
+            key-positions = <8 9>;
+        };
+
+        combo_open_curly_bracket {
+            bindings = <&kp LS(LA(LEFT_BRACE))>;
+            key-positions = <2 1>;
+        };
+
+        combo_closed_curly_bracket {
+            bindings = <&kp LS(LA(RIGHT_BRACE))>;
+            key-positions = <10 9>;
+        };
+
+        combo_capslock {
+            bindings = <&caps_word>;
+            key-positions = <26 27 28>;
+        };
     };
 
     keymap {
@@ -43,14 +139,14 @@
 
         default_layer {
             bindings = <
-&kp ESCAPE    &kp Q        &kp W           &kp E             &kp R           &kp T        &kp Y        &kp U            &kp I        &kp O            &kp P                &kp RIGHT_BRACKET
-&kp TAB       &hr RCTRL A  &hr LEFT_ALT S  &hr LEFT_SHIFT D  &hr LEFT_GUI F  &kp G        &kp H        &hr RIGHT_WIN J  &hr RCTRL K  &hr RIGHT_ALT L  &hr LCTRL SEMICOLON  &kp SQT
-&kp CAPSLOCK  &kp Z        &kp X           &kp C             &kp V           &kp B        &kp N        &kp M            &kp COMMA    &kp DOT          &kp FSLH             &none
-                                           &caps_word        &mo 2           &lt LWR RET  &lt 1 SPACE  &kp BACKSPACE    &kp DELETE
+&kp ESCAPE    &kp Q         &kp W           &kp E             &kp R           &kp T        &kp Y            &kp U            &kp I         &kp O            &kp P                &kp RIGHT_BRACKET
+&kp TAB       &hr RCTRL A   &hr LEFT_ALT S  &hr LEFT_SHIFT D  &hr LEFT_GUI F  &kp G        &kp H            &hr RIGHT_WIN J  &hr RCTRL K   &hr RIGHT_ALT L  &hr LCTRL SEMICOLON  &kp SQT
+&kp CAPSLOCK  &z_tap_dance  &x_tap_dance    &c_tap_dance      &v_tap_dance    &kp B        &kp N            &kp M            &kp COMMA     &kp DOT          &kp FSLH             &none
+                                            &caps_word        &lt 1 ENTER     &lt LWR RET  &lt 2 BACKSPACE  &lt 1 SPACE      &kp CAPSLOCK
             >;
         };
 
-        lower_layer {
+        SYMBOLS {
             bindings = <
 &none        &none      &kp NUMBER_3           &kp NUMBER_2         &kp N1                 &kp ASTERISK   &none   &kp EXCLAMATION       &kp AT_SIGN           &kp HASH               &none  &none
 &kp TAB      &kp EQUAL  &hr LEFT_ALT NUMBER_6  &hr LEFT_CONTROL N5  &hr LEFT_GUI NUMBER_4  &kp KP_DIVIDE  &none   &hr RIGHT_GUI DOLLAR  &hr RCTRL PERCENT     &hr RIGHT_ALT CARET    &none  &none
@@ -59,12 +155,12 @@
             >;
         };
 
-        raise_layer {
+        F-Layer {
             bindings = <
-&none  &kp F1  &kp F2   &kp F3   &kp F4   &none        &kp C_VOLUME_UP    &none     &kp UP_ARROW  &none   &none  &none
-&none  &kp F5  &kp F6   &kp F7   &kp F8   &none        &kp C_VOLUME_DOWN  &kp LEFT  &kp DOWN      &kp UP  &none  &none
-&none  &kp F9  &kp F10  &kp F11  &kp F12  &none        &none              &none     &none         &none   &none  &none
-                        &trans   &trans   &lt ADJ RET  &lt ADJ ESC        &trans    &trans
+&none  &kp F1  &kp F2   &kp F3   &kp F4   &none   &kp C_VOLUME_UP    &none     &kp UP_ARROW  &none   &none  &none
+&none  &kp F5  &kp F6   &kp F7   &kp F8   &none   &kp C_VOLUME_DOWN  &kp LEFT  &kp DOWN      &kp UP  &none  &none
+&none  &kp F9  &kp F10  &kp F11  &kp F12  &none   &none              &none     &none         &none   &none  &none
+                        &trans   &trans   &trans  &trans             &trans    &trans
             >;
         };
 
