@@ -148,10 +148,10 @@
 
         SYMBOLS {
             bindings = <
-&none        &none      &kp NUMBER_3           &kp NUMBER_2         &kp N1                 &kp ASTERISK   &none   &kp EXCLAMATION       &kp AT_SIGN           &kp HASH               &none  &none
-&kp TAB      &kp EQUAL  &hr LEFT_ALT NUMBER_6  &hr LEFT_CONTROL N5  &hr LEFT_GUI NUMBER_4  &kp KP_DIVIDE  &none   &hr RIGHT_GUI DOLLAR  &hr RCTRL PERCENT     &hr RIGHT_ALT CARET    &none  &none
-&kp LS(TAB)  &kp MINUS  &kp N9                 &kp N8               &kp N7                 &kp N0         &none   &kp AMPERSAND         &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &none  &none
-                                               &lt ADJ TAB          &trans                 &trans         &trans  &trans                &lt ADJ DEL
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+                        &trans  &trans  &trans  &trans  &trans  &trans
             >;
         };
 
