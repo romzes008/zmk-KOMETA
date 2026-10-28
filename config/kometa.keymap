@@ -133,6 +133,20 @@
             bindings = <&tog 2>;
             key-positions = <18 7>;
         };
+
+        combo_cs2_mode {
+            bindings = <&tog 6>;
+            key-positions = <1 4>;
+        };
+    };
+
+    macros {
+        double_q: double_q {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp Q &kp Q>;
+            label = "DOUBLE_Q";
+        };
     };
 
     keymap {
@@ -180,6 +194,42 @@
 &trans  &trans  &trans  &trans  &trans  &trans  &kp KP_MINUS  &kp KP_NUMBER_4  &kp KP_NUMBER_5  &kp KP_NUMBER_6  &kp KP_NUMBER_0  &trans
 &trans  &trans  &trans  &trans  &trans  &trans  &kp KP_PLUS   &kp KP_NUMBER_1  &kp KP_NUMBER_2  &kp KP_NUMBER_3  &kp BACKSLASH    &trans
                         &trans  &trans  &trans  &trans        &trans           &trans
+            >;
+        };
+
+        SYMBOLS {
+            bindings = <
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+                        &trans  &trans  &trans  &trans  &trans  &trans
+            >;
+        };
+
+        CS2_BASE {
+            bindings = <
+&kp NUMBER_1  &kp TAB    &kp R  &kp W             &kp E             &none    &none  &none  &none  &none  &none  &none
+&kp NUMBER_2  &double_q  &kp A  &kp S             &kp D             &kp F    &none  &none  &none  &none  &none  &none
+&kp NUMBER_3  &none      &kp Z  &kp X             &kp C             &kp V    &none  &none  &none  &none  &none  &none
+                                &kp LEFT_CONTROL  &mt LEFT_SHIFT B  &lt 7 G  &none  &none  &none
+            >;
+        };
+
+        CS2_BUYMENU1 {
+            bindings = <
+&tog 8           &none            &kp KP_NUMBER_7  &kp KP_NUMBER_8  &kp KP_NUMBER_9  &kp KP_MINUS  &none  &none  &none  &none  &none  &none
+&kp KP_SLASH     &kp KP_MULTIPLY  &kp KP_NUMBER_4  &kp KP_NUMBER_5  &kp KP_NUMBER_6  &kp KP_PLUS   &none  &none  &none  &none  &none  &none
+&kp KP_NUMBER_0  &kp KP_DOT       &kp KP_NUMBER_1  &kp KP_NUMBER_2  &kp KP_NUMBER_3  &kp KP_ENTER  &none  &none  &none  &none  &none  &none
+                                                   &none            &none            &none         &none  &none  &none
+            >;
+        };
+
+        CS_BUYMENU2 {
+            bindings = <
+&tog 8  &none  &none           &kp UP_ARROW    &none            &none  &none  &none  &none  &none  &none  &none
+&none   &none  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW  &none  &none  &none  &none  &none  &none  &none
+&none   &none  &none           &none           &none            &none  &none  &none  &none  &none  &none  &none
+                               &none           &none            &none  &none  &none  &none
             >;
         };
     };
